@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Технологии AJAX</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="index.js"></script>
+  </head>
+  <body onload="fnMyScript();">
+    <header>
+      <h1>Основы асинхронной загрузки контента</h1>
+      <h2>Объект XMLHttpRequest</h2>
+      <h2>Сделано по мотивам сайта "Музеи мира"</h2>
+    </header>
+
+    <nav>
+      <div class="wrap">
+        <ul>
+          <li><a href="#" id="main" rel="menu">Главная</a></li>
+          <li>
+            <a href="#" id="painters">Информация</a>
+            <ul id="paintets_list"></ul>
+          </li>
+          <li><a href="#" id="users">Пользователи</a></li>
+          <li><a href="#" id="marvel">Персонжаи Marvel</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="wrap">
+      <div id="result"></div>
+    </div>
+
+    <div id="modal" class="character-modal character-modal--hide">
+      <div class="character-modal__content">
+        <p id="character_name">123123</p>
+        <p id="character_modified">123123</p>
+        <img
+          id="character_thumbnail"
+          src=""
+          alt="thumbnail"
+          style="max-width: 100px"
+        />
+        <p id="character_description">123123</p>
+        <button id="modal_button" class="character-modal__button-close">
+          Закрыть
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+/* CSS Document */
+body {
+  background: #212121;
+  /*font-size:22px;*/
+  line-height: 32px;
+  color: #ffffff;
+  word-wrap: break-word !important;
+  font-family: "Tahoma";
+}
+
+header {
+  margin: 0 auto;
+  height: 400px;
+  overflow: hidden; /*отображение содержания блочного элемента, если оно целиком не помещается и выходит за область заданных размеров*/
+  background-image: url(images/header-bckgr.jpg); /*установка фонового изображения*/
+}
+
+h1 {
+  margin-top: 100px;
+  font-size: 40px;
+  text-align: center;
+  color: #fff;
+}
+
+h2 {
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+}
+
+h3 {
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+h3 a {
+  color: #fff;
+}
+
+a {
+  color: #fff;
+}
+
+p {
+  text-align: center;
+}
+
+.wrap {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+nav {
+  background-color: #e64a19;
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+nav ul li {
+  display: inline-block;
+  background-color: #e64a19;
+}
+
+nav a {
+  display: block;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 20px;
+  line-height: 60px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #000000;
+}
+
+/* Hide Dropdowns by Default */
+nav ul ul {
+  display: none;
+  position: absolute;
+  top: 60px; /* the height of the main nav */
+}
+
+/* Display Dropdowns on Hover */
+nav ul li:hover > ul {
+  display: inherit;
+}
+
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+  width: 170px;
+  float: none;
+  display: list-item;
+  position: relative;
+}
+
+/* Second, Third and more Tiers	*/
+nav ul ul ul li {
+  position: relative;
+  top: -60px;
+  left: 170px;
+}
+
+/* Change this in order to change the Dropdown symbol */
+li > a:after {
+  content: " +";
+}
+li > a:only-child:after {
+  content: "";
+}
+
+table td h2 {
+  margin: 0px;
+  font-size: 20px;
+  text-align: left;
+  color: #fff;
+}
+
+.character-modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.character-modal--hide {
+  display: none;
+}
+.character-modal__content {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  background: #fff;
+  min-height: 50px;
+  width: 300px;
+  padding: 20px;
+}
+
+.character-modal__content p {
+  color: #000;
+}
