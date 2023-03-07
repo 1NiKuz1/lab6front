@@ -1,11 +1,59 @@
 const users = document.getElementById("users");
 const result = document.getElementById("result");
 const marvel = document.getElementById("marvel");
+const posts = document.getElementById("posts");
 const modal = document.getElementById("modal");
 
 document.getElementById("modal_button").onclick = () => {
   modal.classList.add("character-modal--hide");
 };
+
+async function getPosts() {
+  try {
+    html = "<h1>Посты</h1>";
+    result.innerHTML = html;
+    let promise = await fetch("http://fetch/posts.php");
+    let resPosts = await promise.json();
+    console.log(resPosts);
+    for (let item of resPosts) {
+      html += `<li><a href="#" id="${item.id}" user_id="${item.user_id}" rel="posts">${item.title}</a></li>`;
+    }
+    result.innerHTML = html;
+    document.querySelectorAll("[rel=posts]").forEach((el) => {
+      el.onclick = async () => {
+        result.innerHTML = "";
+        let id = el.id;
+        let user_id = el.getAttribute("user_id");
+        let post = resPosts.find((item) => item.id == id);
+
+        let promise = await fetch("http://fetch/users.php");
+        let res = await promise.json();
+        console.log(res);
+        let user = res.find((item) => item.id == user_id);
+
+        promise = await fetch("http://fetch/comments.php");
+        res = await promise.json();
+        console.log(res);
+        let comments = res.filter((item) => item.post_id == id);
+
+        let content = `<h2>${post.title}</h2>
+        <p>${post.body}</p>
+        <p>Автор поста: ${user.name}</p>
+        `;
+        for (let item of comments) {
+          content += `<h3>Автор комментария: ${item.name}</h3>
+          <p>Комментарий: ${item.body}</p>`;
+        }
+        result.innerHTML = content;
+      };
+    });
+  } catch (e) {
+    console.log(e.stack);
+    html = "<h3>Во время выполнения асинхронного запроса возникла ошибка!</h3>";
+    html += "Сервер вернул сообщение: " + e.message;
+    result.innerHTML = html;
+  }
+}
 
 async function loadCharacter(id) {
   const characterName = document.getElementById("character_name");
@@ -118,6 +166,10 @@ function fnMyScript() {
 
   marvel.onclick = () => {
     loadMarvel();
+  };
+
+  posts.onclick = () => {
+    getPosts();
   };
 
   document.querySelectorAll("[rel=painters]").forEach((el) => {
